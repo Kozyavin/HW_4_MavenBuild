@@ -27,19 +27,19 @@ public class BonusServiceTest {
         Assertions.assertEquals(expected, actual);
     }
     @Test
-    void shouldCalculateForRegisteredAndOverLimit() {
+    void shouldCalculateForRegisteredAndZeroAmount() {
         BonusService service = new BonusService();
         // подготавливаем данные:
-        long amount = 1_000_000;
+        long amount = 0;
         boolean registered = true;
-        long expected = 500;
+        long expected = 0;
         // вызываем целевой метод:
         long actual = service.calculate(amount, registered);
         // производим проверку (сравниваем ожидаемый и фактический):
         Assertions.assertEquals(expected, actual);
     }
     @Test
-    void shouldCalculateForUnregisteredAndBoundaryLimit() {
+    void shouldCalculateForUnregisteredAndOverLimit() {
         BonusService service = new BonusService();
         // подготавливаем данные:
         long amount = 50_000;
@@ -50,6 +50,4 @@ public class BonusServiceTest {
         // производим проверку (сравниваем ожидаемый и фактический):
         Assertions.assertEquals(expected, actual);
     }
-
-
 }
